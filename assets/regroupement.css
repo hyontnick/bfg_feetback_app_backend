@@ -1,0 +1,73 @@
+/* Charger Font Awesome via CDN */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+.regroupement-table-col {
+    padding: 10px;
+}
+
+.regroupement-table {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+.regroupement-table h2 {
+    color: #2c3e50;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.regroupement-table h3 {
+    color: #34495e;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.dash-spreadsheet-container {
+    height: auto !important;
+    overflow-x: auto;
+}
+
+.dash-spreadsheet-inner {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+#download-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+}
+
+#download-button i {
+    margin-right: 5px;
+}
+
+/* Responsivité : ajustement sur petits écrans */
+@media (max-width: 768px) {
+    .regroupement-table {
+        height: auto;
+        overflow-x: auto;
+    }
+    .dash-spreadsheet-container {
+        max-height: none !important;
+        overflow-y: auto !important;
+    }
+}
+
+/* Sur grands écrans, limiter la hauteur si nécessaire */
+@media (min-width: 769px) {
+    .dash-spreadsheet-container {
+        max-height: 70vh !important;
+        overflow-y: auto !important;
+    }
+}

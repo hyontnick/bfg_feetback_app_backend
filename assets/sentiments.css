@@ -1,0 +1,51 @@
+.sentiment-graph-col {
+    padding: 10px;
+}
+
+.sentiment-graph {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 300px; /* Hauteur fixe pour grands écrans */
+    overflow: hidden; /* Évite le défilement dans les graphiques individuels */
+}
+
+.sentiment-graph h2 {
+    color: #2c3e50;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dash-graph {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+/* Responsivité : empilement sur petits écrans avec défilement si nécessaire */
+@media (max-width: 768px) {
+    .sentiment-graph-col {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .sentiment-graph {
+        height: auto; /* Hauteur automatique pour s’adapter au contenu */
+        overflow: visible; /* Permet le défilement naturel si nécessaire */
+    }
+    div[data-dash-is-loading_] {
+        max-height: none !important; /* Supprime la limite de hauteur */
+        overflow-y: auto !important; /* Active le défilement vertical si besoin */
+    }
+}
+
+/* Sur grands écrans, limiter la hauteur totale si possible */
+@media (min-width: 769px) {
+    div[data-dash-is-loading_] {
+        max-height: 90vh !important;
+        overflow-y: hidden !important;
+    }
+}

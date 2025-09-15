@@ -1,0 +1,119 @@
+/* Importation de Google Fonts pour Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f7fa;
+    color: #34495e;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.display-4 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+}
+
+.nav-tabs-custom {
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.nav-tabs .nav-link {
+    color: #34495e;
+    font-weight: 500;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #ffffff;
+    border: 1px solid #ecf0f1;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: #e6f0fa;
+    color: #2980b9;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #2c3e50;
+    color: #ffffff;
+    border: 1px solid #2c3e50;
+    border-bottom: none;
+}
+
+.nav-tabs .nav-link .fas {
+    font-size: 1.2rem;
+}
+
+/* Styles pour les titres des KPI */
+.card h5 {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    overflow: hidden; /* Cache le texte qui dépasse */
+    text-overflow: ellipsis; /* Ajoute "..." si le texte est trop long */
+    max-width: 100%; /* Limite la largeur au conteneur */
+    padding: 0 5px; /* Ajoute un léger padding pour le confort */
+}
+
+/* Tooltip pour afficher le texte complet au survol */
+.card h5:hover {
+    position: relative;
+}
+
+.card h5:hover:after {
+    content: attr(data-full-text);
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    white-space: nowrap;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-size: 0.9rem;
+}
+
+/* Media queries pour les petits écrans */
+@media (max-width: 768px) {
+    .card h5 {
+        font-size: 0.9rem; /* Réduit la taille de police */
+    }
+    .card .display-4 {
+        font-size: 1.5rem; /* Réduit la taille des chiffres */
+    }
+    .card {
+        margin-bottom: 1rem; /* Espacement entre les cartes */
+    }
+}
+
+@media (max-width: 576px) {
+    .card h5 {
+        font-size: 0.8rem; /* Encore plus petit pour très petits écrans */
+    }
+    .card .display-4 {
+        font-size: 1.2rem; /* Ajuste les chiffres */
+    }
+    dbc.Row {
+        flex-direction: column; /* Empile les colonnes verticalement */
+    }
+    dbc.Col {
+        width: 100% !important; /* Pleine largeur pour chaque carte */
+        margin-bottom: 1rem;
+    }
+}
+
+

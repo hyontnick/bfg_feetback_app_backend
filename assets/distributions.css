@@ -1,0 +1,59 @@
+.distribution-graph-col {
+    padding: 10px;
+}
+
+.distribution-graph {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.distribution-graph h2 {
+    color: #2c3e50;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.dash-graph {
+    height: 100% !important;
+    width: 100% !important;
+    flex-grow: 1;
+    object-fit: contain;
+}
+
+/* Responsivité : alignement vertical sur petits écrans */
+@media (max-width: 768px) {
+    .distribution-graph-col {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .distribution-graph {
+        height: auto;
+        overflow: visible;
+    }
+    .row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    div[data-dash-is-loading_] {
+        max-height: none !important;
+        overflow-y: auto !important;
+    }
+}
+
+/* Sur grands écrans, maintenir la grille 2x2 */
+@media (min-width: 769px) {
+    div[data-dash-is-loading_] {
+        max-height: 90vh !important;
+        overflow-y: hidden !important;
+    }
+}

@@ -1,0 +1,13 @@
+dash
+dash-bootstrap-components
+pandas
+sqlalchemy
+reportlab
+psycopg2-binary
+plotly
+numpy==1.26.4
+scikit-learn==1.5.1
+wordcloud
+Pillow
+gunicorn
+python-multipart
