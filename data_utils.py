@@ -5,9 +5,10 @@ from sqlalchemy import create_engine
 
 def get_feedback_data(filters=None):
     # Récupérer la chaîne de connexion depuis une variable d'environnement
-    DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:AZERTY143ROSE@db.arekyrnteadnyftuczqf.supabase.co:5432/postgres")
-    
-    # Créer une connexion via SQLAlchemy pour pandas
+    DATABASE_URL = os.getenv("DATABASE_URL")
+    if not DATABASE_URL:
+        raise ValueError("La variable d'environnement DATABASE_URL n'est pas définie")
+         # Créer une connexion via SQLAlchemy pour pandas
     engine = create_engine(DATABASE_URL)
     
     # Requête SQL

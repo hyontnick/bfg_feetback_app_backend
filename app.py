@@ -15,7 +15,9 @@ from reportlab.lib.styles import getSampleStyleSheet
 from data_utils import get_feedback_data
 
 # Configuration de la connexion à Supabase
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:AZERTY143ROSE@db.arekyrnteadnyftuczqf.supabase.co:5432/postgres")
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise ValueError("La variable d'environnement DATABASE_URL n'est pas définie")
 engine = create_engine(DATABASE_URL)
 
 # Initialisation de l'application Dash avec un thème Bootstrap et Font Awesome
