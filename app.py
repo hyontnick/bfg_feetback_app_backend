@@ -710,7 +710,7 @@ app.clientside_callback(
     """
     function(n_clicks) {
         if (n_clicks > 0) {
-            window.open('http://localhost:8080/home', '_blank');
+            window.location.href = 'https://admin-blflge.onrender.com';
         }
         return window.dash_clientside.no_update;
     }
