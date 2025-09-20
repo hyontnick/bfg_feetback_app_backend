@@ -25,6 +25,8 @@ app = dash.Dash(__name__, update_title=None, external_stylesheets=[dbc.themes.BO
 
 app.title = "Feedback"
 
+server = app.server  # Expose Flask server pour endpoints custom
+
 # Dictionnaire pour le multilinguisme
 translations = {
     'fr': {
@@ -97,6 +99,11 @@ translations = {
     }
 }
 
+# Endpoint /health pour monitoring
+@server.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "ok"})
+    
 # Calcul des KPI avec évolution sur 1 semaine
 def calculate_kpis(df):
     total_comments = len(df)
