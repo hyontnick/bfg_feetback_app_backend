@@ -519,7 +519,7 @@ def update_language_content(language):
                 html.I(className="fas fa-calendar"),
                 dcc.DatePickerRange(
                     id='filter-date-modal',
-                    start_date=pd.read_sql_query("SELECT MIN(timestamp)::text AS min_timestamp FROM feedback", engine)['MIN(timestamp)'][0],
+                    start_date=pd.read_sql_query("SELECT MIN(timestamp)::text AS min_timestamp FROM feedback", engine)['min_timestamp'][0],
                     end_date=pd.to_datetime('today'),
                     display_format='YYYY-MM-DD'
                 )
