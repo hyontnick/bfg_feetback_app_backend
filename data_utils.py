@@ -10,29 +10,17 @@ def get_feedback_data(filters=None):
     if not DATABASE_URL:
         raise ValueError("La variable d'environnement DATABASE_URL n'est pas définie")
     
-    # ✅ CORRECTION 1: Créer engine sans pool pour éviter le cache
+    # ✅ CORRECTION : Créer engine SANS pool pour éviter le cache
     engine = create_engine(
         DATABASE_URL,
-        poolclass=NullPool,  # Désactive le pool de connexions
-        isolation_level="AUTOCOMMIT"  # Force la lecture des dernières données
+        poolclass=NullPool,      # Pas de pool = connexion fraîche à chaque fois
+        pool_pre_ping=True       # Vérifie que la connexion est vivante
     )
     
     try:
-        # ✅ CORRECTION 2: Requête SQL avec ORDER BY pour garantir l'ordre
-        query = """
-        SELECT rating, sentiment, timestamp, language, unique_code, comment 
-        FROM feedback 
-        ORDER BY timestamp DESC
-        """
-        
-        # ✅ CORRECTION 3: Lecture avec connexion fraîche
-        with engine.connect() as conn:
-            df = pd.read_sql_query(query, conn)
-        
-        # Log pour debug (à retirer en production)
-        print(f"[DEBUG] Lignes chargées: {len(df)}")
-        if len(df) > 0:
-            print(f"[DEBUG] Dernière entrée: {df['timestamp'].max()}")
+        # Requête SQL
+        query = "SELECT rating, sentiment, timestamp, language, unique_code, comment FROM feedback ORDER BY timestamp DESC"
+        df = pd.read_sql_query(query, engine)
         
         # Conversion du champ timestamp en datetime
         df['timestamp'] = pd.to_datetime(df['timestamp'])
@@ -51,5 +39,5 @@ def get_feedback_data(filters=None):
         return df
     
     finally:
-        # ✅ CORRECTION 4: Fermer proprement l'engine
+        # ✅ IMPORTANT : Fermer l'engine après chaque utilisation
         engine.dispose()
